@@ -1,0 +1,30 @@
+.nav{
+    background-color: blanchedalmond;
+    width: 100%;
+}
+
+.navUl{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.navUlLi{
+    padding: 15px;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.navUlLiA{
+    text-decoration: none;
+    display: block;
+    color: #000099;
+}
+
+.navUlLiA:hover{
+    border-bottom: 2px solid #8C8880;
+    color: black;
+    text-decoration: none;
+}

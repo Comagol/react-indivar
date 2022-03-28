@@ -1,6 +1,7 @@
 .nav{
     background-color: blanchedalmond;
     width: 100%;
+    display: block;
 }
 
 .navUl{
@@ -27,4 +28,8 @@
     border-bottom: 2px solid #8C8880;
     color: black;
     text-decoration: none;
+}
+
+.cartwidget{
+    display: inline-block;
 }

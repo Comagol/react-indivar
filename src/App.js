@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import ItemListCountenier from './components/ItemListConteiner/ItemListConteiner';
 import ItemCount from './components/ItemCount/ItemCount';
+import ItemDetailCountainer from './components/ItemDetailContainer/ItemDetailCountainer';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <NavBar/>
         <ItemListCountenier title='Indivar Deco'/>
         <ItemCount initial={1} stock={6} onAdd={handleOnAdd}/>
+        <ItemDetailCountainer/>
       </header>
     </div>
   );

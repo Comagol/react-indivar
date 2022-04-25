@@ -1,7 +1,13 @@
-import { link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Item.css'
 
 const Item = ({id, name, img, price }) => {
+
+    const handleClick = (e) => {
+        e.stopPropagation()
+        console.log('Hice click en item')
+    }
+    
     return(
         <section className="CardItem">
             <header className="header">
@@ -18,7 +24,7 @@ const Item = ({id, name, img, price }) => {
                 </p>
             </section>
             <footer className='ItemFooter'>
-                {/* <link to={`/detail/${id}`} className="Option">Ver detalle</link> */}
+                { <Link to={`/detail/${id}`} className="Option">Ver detalle</Link> }
             </footer>
         </section>
     )

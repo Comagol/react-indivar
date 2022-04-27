@@ -1,41 +1,18 @@
 import './ItemDetail.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-
-const ButtonCount = ({ onConfirm, stock, initial = 1 }) => {
-    const [count, setCount] = useState(initial)
-
-    const increment = () => {
-        if (count < stock)
-        setCount(count + 1)
-    }
-
-    const decrement = () => {
-        if (count > initial)
-        setCount(count - 1)
-    }
-
-    return (
-        <div>
-            <p>{count}</p>
-            <button onClick={decrement}>-</button>
-            <button onClick={increment}>+</button>
-            <button onClick={() => onConfirm(count)}>Agregar al carrito</button>
-        </div>
-    )
-}
+import Counter from   '../ItemCount/Counter'
+import CartContext from '../../context/CartContext'
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
-
-    const [typeInput, setTypeInput] = useState(true)
-    const [quantity, setQuantity] = useState(0)
+    const { addItem, isInCart } = useContext(CartContext)
 
     const handleAdd = (count) => {
-        console.log('Agregar al carrito')
-        setQuantity(count)
+        const productObj = {
+            id, name,price, quantity: count
+        }
+        addItem({...productObj, quantity:count})
     }
-
-    const Count =  ButtonCount 
 
     return (
         <article className="CardItem">
@@ -58,7 +35,8 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
                     Precio: {price} 
                 </p>
                 <div>
-                    {quantity > 0 ? <Link to='/cart'>Todavia no va al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}/> }
+                    {/* {quantity > 0 ? <Link to='/cart'>Todavia no va al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}/> } */}
+                    { isInCart(id) ? <Link to='/cart'>Ir al carrito</Link> : <Counter onAdd={handleAdd} stock={stock}/> }
                 </div>
             </section> 
         </article>

@@ -1,9 +1,10 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import NavBar from './components/NavBar';
 import ItemListCountenier from './components/ItemListConteiner/ItemListConteiner';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCountainer';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <CartContextProvider>
        <BrowserRouter>
           <NavBar />
           <Routes>
@@ -22,6 +24,7 @@ function App() {
             <Route path='*' element={<h1>NOT FOUND 404</h1>}/>
           </Routes>
         </BrowserRouter>
+      </CartContextProvider>
     </div>
   );
 }

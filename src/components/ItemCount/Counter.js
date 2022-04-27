@@ -1,17 +1,16 @@
-import './ItemCount.css';
+import './Counter.css';
 import { useState } from 'react';
 
-const ItemCount = ({initial, stock, onAdd}) => {
 
-    const [count, setCount] = useState(initial)
+const Counter = ({initial, stock, onAdd}) => {
+
+    const [count, setCount] = useState(0)
 
     const decrement = () => {
-        if (count > initial)
         setCount(count - 1)
     }
 
     const increment = () => {
-        if (count < stock)
         setCount(count + 1)
     }
 
@@ -25,4 +24,4 @@ const ItemCount = ({initial, stock, onAdd}) => {
     )
 } 
 
-export default ItemCount
+export default Counter

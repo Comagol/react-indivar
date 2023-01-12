@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import Counter from   '../ItemCount/Counter'
 import CartContext from '../../context/CartContext'
 
-const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
+const ItemDetail = ({ id, name, img, category, description, price, initial , stock }) => {
     const { addItem, isInCart } = useContext(CartContext)
 
     const handleAdd = (count) => {
         const productObj = {
-            id, name,price, quantity: count
+            id, name , price, img , quantity: count
         }
         addItem({...productObj, quantity:count})
     }
@@ -36,7 +36,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
                 </p>
                 <div>
                     {/* {quantity > 0 ? <Link to='/cart'>Todavia no va al carrito</Link> : <Count onConfirm={handleAdd} stock={stock}/> } */}
-                    { isInCart(id) ? <Link to='/cart'>Ir al carrito</Link> : <Counter onAdd={handleAdd} stock={stock}/> }
+                    { isInCart(id) ? <Link to='/cart'>Ir al carrito</Link> : <Counter onAdd={handleAdd} stock={stock} initial={initial}/> }
                 </div>
             </section> 
         </article>

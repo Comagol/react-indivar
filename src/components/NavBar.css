@@ -1,12 +1,16 @@
-.NavBar {
+  .NavBar {
+    position: fixed;
+    top: 0;
     display: flex;
     background: transparent;
     justify-content: space-around;
     align-items: center;
     height: auto;
     background: #E5DCC3;
+    width: 100%;
+    z-index: 1;
   }
-  
+
   .Categories {
     display: flex;
     justify-content: space-around;

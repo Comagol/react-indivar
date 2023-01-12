@@ -4,14 +4,23 @@ import { useState } from 'react';
 
 const Counter = ({initial, stock, onAdd}) => {
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(initial)
 
     const decrement = () => {
-        setCount(count - 1)
+        if (initial < count){
+            setCount(count - 1)
+        }else{
+            alert("La cantidad no puede ser menor a " + initial)
+        }
+        
     }
 
     const increment = () => {
-        setCount(count + 1)
+        if (count < stock) {
+            setCount (count + 1)
+        }else {
+            alert("Para pedidos mayores a esta cantidad " + stock + " contartarnos por instagram")
+        }
     }
 
     return (

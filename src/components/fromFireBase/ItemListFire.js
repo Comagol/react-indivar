@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import ItemDetail from '../ItemDetail/ItemDetail'
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailCountainer'
 
 const ItemListFire = () => {
@@ -17,7 +18,7 @@ const ItemListFire = () => {
         console.log(snapShot.docs.map(d => ({ id: d.id, ...d.data() })));
     }
     return (
-        <ItemDetailContainer items={items} />
+        <h1>hola</h1>
     )
 }
 

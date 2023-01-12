@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import CartContext from '../../context/CartContext'
 
 const Form = () => {
+
+    const { clearCart } = useContext ( CartContext )
+
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [phone, setPhone] = useState('');
@@ -15,8 +21,24 @@ const Form = () => {
         console.log('Email:', email);
     }
 
+    const [order, setOrders] = useState([])
+
+    useEffect(() => {
+        getColeccionOrder()
+    }, [])
+
+    const getColeccionOrder = async () => {
+        const db = getFirestore()
+        const collectionRef = collection(db, 'orders')
+        const snapShot = await getDocs(collectionRef)
+        setOrders(snapShot.docs.map(d => ({ id: d.id, ...d.data() })));
+    }
+
+   
+
     return (
         <form onSubmit={handleSubmit}>
+            { order.length > 0 && <h1>tu Id de la compra es: {order[order.length-1].id}</h1> }
             <label>
                 Nombre:
                 <input type="text" value={name} onChange={event => setName(event.target.value)} />
@@ -37,7 +59,7 @@ const Form = () => {
                 <input type="email" value={email} onChange={event => setEmail(event.target.value)} />
             </label>
             <br />
-            <button type="submit">Enviar</button>
+            <button type="submit" onClick={clearCart}>Enviar</button>
         </form>
     )
 }
